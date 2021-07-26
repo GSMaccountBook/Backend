@@ -1,7 +1,6 @@
 import { Body, Req } from '@nestjs/common';
 import { Controller, Post } from '@nestjs/common';
-import { Userdata } from 'entity/userdata/userdata.entity';
-import {DatabaseModule} from 'database/database.module'
+import { Userdata } from 'userdata/userdata.entity';
 //import { LoginService } from './login.service';
 
 let userdata = [
