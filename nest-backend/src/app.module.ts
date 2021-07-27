@@ -9,6 +9,7 @@ import { LoginModule } from './login/login.module';
 import { UserdataModule } from 'userdata/userdata.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Userdata } from 'userdata/userdata.entity';
+import { UserdataService } from 'userdata/userdata.service';
 
 @Module({
   imports: [
@@ -24,6 +25,6 @@ import { Userdata } from 'userdata/userdata.entity';
     }),
     DashboardModule, LoginModule, UserdataModule],
   controllers: [AppController, DashboardController, LoginController],
-  providers: [AppService, DashboardService],
+  providers: [AppService, DashboardService,UserdataService],
 })
 export class AppModule {}

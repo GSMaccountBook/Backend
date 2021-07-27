@@ -1,7 +1,6 @@
 import { Body, Get, Req } from '@nestjs/common';
 import { Controller, Post } from '@nestjs/common';
 import { UserdataService } from 'userdata/userdata.service'
-import { LoginService } from './login.service';
 
 let userdata = [
     {
@@ -34,6 +33,7 @@ export class LoginController {
     @Get()
     async getdata() {
         const data = await this.userdataservice.getData()
+        return data;
     }
 
 }
