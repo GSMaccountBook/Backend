@@ -1,7 +1,7 @@
-import { Body, Req } from '@nestjs/common';
+import { Body, Get, Req } from '@nestjs/common';
 import { Controller, Post } from '@nestjs/common';
-import { Userdata } from 'userdata/userdata.entity';
-//import { LoginService } from './login.service';
+import { UserdataService } from 'userdata/userdata.service'
+import { LoginService } from './login.service';
 
 let userdata = [
     {
@@ -17,6 +17,8 @@ let userdata = [
 
 @Controller('login')
 export class LoginController {
+    constructor(private readonly userdataservice: UserdataService) {}
+
     @Post()
     findAll(@Body() data) {
         userdata.forEach(element => {
@@ -29,4 +31,9 @@ export class LoginController {
             }
         });
     }
+    @Get()
+    async getdata() {
+        const data = await this.userdataservice.getData()
+    }
+
 }

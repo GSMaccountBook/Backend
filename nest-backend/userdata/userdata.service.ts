@@ -10,7 +10,7 @@ export class UserdataService {
     private usersRepository: Repository<Userdata>,
   ) {}
 
-  findAll(): Promise<Userdata[]> {
+  getData(): Promise<Userdata[]> {
     return this.usersRepository.find();
   }
 
