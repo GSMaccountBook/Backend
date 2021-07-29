@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Userdata } from './userdata.entity';
+import { ICreateUserdata } from './userdata.interface';
 
 @Injectable()
 export class UserdataService {
@@ -10,6 +11,9 @@ export class UserdataService {
     private usersRepository: Repository<Userdata>,
   ) {}
 
+  createUserdata(createUserDto: ICreateUserdata) {
+    return this.usersRepository.create(createUserDto);
+  }
   getData(): Promise<Userdata[]> {
     return this.usersRepository.find();
   }

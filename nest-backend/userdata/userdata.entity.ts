@@ -1,4 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  PrimaryGeneratedColumn,
+  Entity,
+  Column,
+} from "typeorm";
 
 @Entity()
 export class Userdata {
@@ -16,5 +20,4 @@ export class Userdata {
 
   @Column()
   email: string;
-
 }
