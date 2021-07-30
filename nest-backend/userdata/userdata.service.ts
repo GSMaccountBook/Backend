@@ -12,7 +12,7 @@ export class UserdataService {
   ) {}
 
   createUserdata(createUserDto: ICreateUserdata) {
-    return this.usersRepository.create(createUserDto);
+    return this.usersRepository.save(createUserDto);
   }
   getData(): Promise<Userdata[]> {
     return this.usersRepository.find();
@@ -20,6 +20,10 @@ export class UserdataService {
 
   findOne(id: string): Promise<Userdata> {
     return this.usersRepository.findOne(id);
+  }
+
+  findIdCheck(userid: string): Promise<Userdata> {
+    return this.usersRepository.findOne({userid:userid});
   }
 
   async remove(id: string): Promise<void> {
