@@ -1,4 +1,4 @@
-import { Body, Get, Req } from '@nestjs/common';
+import { Body, Get, HttpException, HttpStatus, Req } from '@nestjs/common';
 import { Controller, Post } from '@nestjs/common';
 import { ICreateUserdata } from 'userdata/userdata.interface';
 import { UserdataService } from 'userdata/userdata.service'
@@ -21,8 +21,14 @@ export class LoginController {
 
     @Post()
     async findAll(@Body() createUserdataDto: ICreateUserdata) {
-        const result = await this.userdataservice.createUserdata(createUserdataDto);
-        return result;
+        const idCheck = await this.userdataservice.findIdCheck(createUserdataDto.userid);
+        if(idCheck != undefined) {
+            throw new HttpException('duplicated userid',HttpStatus.BAD_REQUEST)
+        } else {
+            const result = await this.userdataservice.createUserdata(createUserdataDto);
+            return "회원가입 성공";
+        }
+
     }
     @Get()
     async getdata() {
