@@ -10,6 +10,7 @@ import { UserdataModule } from 'userdata/userdata.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Userdata } from 'userdata/userdata.entity';
 import { UserdataService } from 'userdata/userdata.service';
+import { RegisterModule } from './register/register.module';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { UserdataService } from 'userdata/userdata.service';
       entities: [Userdata],
       synchronize: true,
     }),
-    DashboardModule, LoginModule, UserdataModule],
+    DashboardModule, LoginModule, UserdataModule, RegisterModule],
   controllers: [AppController, DashboardController, LoginController],
   providers: [AppService, DashboardService,UserdataService],
 })
