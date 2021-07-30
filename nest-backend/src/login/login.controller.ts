@@ -9,7 +9,17 @@ export class LoginController {
 
     @Post()
     async findAll(@Body() loginuser: LoginUser) {
-        
+        const result = await this.userdataservice.findIdCheck(loginuser.userid);
+        if(result == undefined) {
+            throw new HttpException('아이디를 찾을 수 없습니다',HttpStatus.BAD_REQUEST);
+        } else {
+            if(result.password == loginuser.password) {
+                //JWT 발급 예정
+                return "로그인 성공"
+            } else {
+                throw new HttpException('failed to login',HttpStatus.BAD_REQUEST)
+            }
+        }
     }
 
     @Get()
