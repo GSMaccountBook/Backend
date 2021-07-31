@@ -2,11 +2,13 @@ import { Body, Get, HttpException, HttpStatus, Req } from '@nestjs/common';
 import { Controller, Post } from '@nestjs/common';
 import { LoginUser } from 'userdata/login.interface';
 import { UserdataService } from 'userdata/userdata.service'
+import { AuthService } from 'src/auth/auth.service';
+import { ICreateUserdata } from 'userdata/userdata.interface';
 
 @Controller('login')
 export class LoginController {
-    constructor(private readonly userdataservice: UserdataService) {}
-
+    
+    constructor(private readonly userdataservice: UserdataService,private authService: AuthService) {}
     @Post()
     async findAll(@Body() loginuser: LoginUser) {
         const result = await this.userdataservice.findIdCheck(loginuser.userid);
@@ -15,12 +17,14 @@ export class LoginController {
         } else {
             if(result.password == loginuser.password) {
                 //JWT 발급 예정
+                this.authService.IssueJWT(loginuser);
                 return "로그인 성공"
             } else {
                 throw new HttpException('failed to login',HttpStatus.BAD_REQUEST)
             }
         }
     }
+
 
     @Get()
     async getdata() {

@@ -6,7 +6,7 @@ import { UserdataService } from 'userdata/userdata.service';
 export class RegisterController {
     constructor(private readonly userdataservice: UserdataService) {}
 
-    @Post('register')
+    @Post()
     async findAll(@Body() createUserdataDto: ICreateUserdata) {
         const idCheck = await this.userdataservice.findIdCheck(createUserdataDto.userid);
         if(idCheck != undefined) {

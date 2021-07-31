@@ -11,6 +11,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Userdata } from 'userdata/userdata.entity';
 import { UserdataService } from 'userdata/userdata.service';
 import { RegisterModule } from './register/register.module';
+import { AuthModule } from './auth/auth.module';
+import { RegisterController } from './register/register.controller';
 
 @Module({
   imports: [
@@ -24,8 +26,8 @@ import { RegisterModule } from './register/register.module';
       entities: [Userdata],
       synchronize: true,
     }),
-    DashboardModule, LoginModule, UserdataModule, RegisterModule],
-  controllers: [AppController, DashboardController, LoginController],
+    DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule],
+  controllers: [AppController, DashboardController, LoginController,RegisterController],
   providers: [AppService, DashboardService,UserdataService],
 })
 export class AppModule {}
