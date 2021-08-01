@@ -13,6 +13,10 @@ import { UserdataService } from 'userdata/userdata.service';
 import { RegisterModule } from './register/register.module';
 import { AuthModule } from './auth/auth.module';
 import { RegisterController } from './register/register.controller';
+import { MoneydataService } from './moneydata/moneydata.service';
+import { MoneydataModule } from './moneydata/moneydata.module';
+import { MoneyData } from './moneydata/moneydata.entity';
+import { MoneyController } from './money/money.controller';
 
 @Module({
   imports: [
@@ -23,11 +27,11 @@ import { RegisterController } from './register/register.controller';
       username: 'root',
       password: '0112',
       database: 'test',
-      entities: [Userdata],
+      entities: [Userdata,MoneyData],
       synchronize: true,
     }),
-    DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule],
-  controllers: [AppController, DashboardController, LoginController,RegisterController],
-  providers: [AppService, DashboardService,UserdataService],
+    DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule, MoneydataModule],
+  controllers: [AppController, DashboardController, LoginController,RegisterController,MoneyController],
+  providers: [AppService, DashboardService,UserdataService, MoneydataService],
 })
 export class AppModule {}

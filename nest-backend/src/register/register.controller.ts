@@ -15,6 +15,5 @@ export class RegisterController {
             const result = await this.userdataservice.createUserdata(createUserdataDto);
             return "회원가입 성공";
         }
-
     }
 }

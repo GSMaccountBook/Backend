@@ -3,6 +3,6 @@ import { UserdataService } from 'userdata/userdata.service';
 import { RegisterService } from './register.service';
 
 @Module({
-  providers: [RegisterService,UserdataService],
+  providers: [RegisterService],
 })
 export class RegisterModule {}

@@ -16,7 +16,6 @@ export class LoginController {
             throw new HttpException('아이디를 찾을 수 없습니다',HttpStatus.BAD_REQUEST);
         } else {
             if(result.password == loginuser.password) {
-                //JWT 발급 예정
                 this.authService.IssueJWT(loginuser);
                 return "로그인 성공"
             } else {
