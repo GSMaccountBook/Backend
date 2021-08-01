@@ -5,7 +5,7 @@ import {
   } from "typeorm";
 
 @Entity()
-export class MoneyData {
+export class Moneydata {
     @PrimaryGeneratedColumn()
     id:number
 

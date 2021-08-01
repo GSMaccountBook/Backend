@@ -15,7 +15,7 @@ import { AuthModule } from './auth/auth.module';
 import { RegisterController } from './register/register.controller';
 import { MoneydataService } from './moneydata/moneydata.service';
 import { MoneydataModule } from './moneydata/moneydata.module';
-import { MoneyData } from './moneydata/moneydata.entity';
+import { Moneydata } from './moneydata/moneydata.entity';
 import { MoneyController } from './money/money.controller';
 
 @Module({
@@ -27,7 +27,7 @@ import { MoneyController } from './money/money.controller';
       username: 'root',
       password: '0112',
       database: 'test',
-      entities: [Userdata,MoneyData],
+      entities: [Userdata,Moneydata],
       synchronize: true,
     }),
     DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule, MoneydataModule],
