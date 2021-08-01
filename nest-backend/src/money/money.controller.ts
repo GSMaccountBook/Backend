@@ -14,6 +14,7 @@ export class MoneyController {
     }
     @Get()
     async getData() {
-        this.moneydataservice.getData()
+        let data = await this.moneydataservice.getData()
+        return data;
     }
 }
