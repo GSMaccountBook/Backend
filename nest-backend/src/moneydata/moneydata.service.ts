@@ -18,10 +18,6 @@ export class MoneydataService {
         return this.moneyRepository.find();
       }
     
-      findOne(id: string): Promise<Moneydata> {
-        return this.moneyRepository.findOne(id);
-      }
-    
       findIdCheck(userid: string): Promise<Moneydata> {
         return this.moneyRepository.findOne({userid:userid});
       }
