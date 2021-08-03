@@ -20,6 +20,7 @@ export class MoneydataService {
     
       findIdCheck(userid: string): Promise<Moneydata> {
         return this.moneyRepository.findOne({userid:userid});
+
       }
     
       async remove(userid: string): Promise<void> {

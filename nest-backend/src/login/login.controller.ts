@@ -3,7 +3,6 @@ import { Controller, Post } from '@nestjs/common';
 import { LoginUser } from 'userdata/login.interface';
 import { UserdataService } from 'userdata/userdata.service'
 import { AuthService } from 'src/auth/auth.service';
-import { ICreateUserdata } from 'userdata/userdata.interface';
 
 @Controller('login')
 export class LoginController {
