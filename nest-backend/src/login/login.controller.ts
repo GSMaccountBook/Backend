@@ -3,23 +3,27 @@ import { Controller, Post } from '@nestjs/common';
 import { LoginUser } from 'userdata/login.interface';
 import { UserdataService } from 'userdata/userdata.service'
 import { AuthService } from 'src/auth/auth.service';
+import { LoginService } from './login.service';
 
 @Controller('login')
 export class LoginController {
     
-    constructor(private readonly userdataservice: UserdataService,private authService: AuthService) {}
+    constructor(private readonly userdataservice: UserdataService,private authService: AuthService,private readonly loginservice:LoginService) {}
     @Post()
     async findAll(@Body() loginuser: LoginUser) {
         const result = await this.userdataservice.findIdCheck(loginuser.userid);
         if(result == undefined) {
             throw new HttpException('아이디를 찾을 수 없습니다',HttpStatus.BAD_REQUEST);
         } else {
+            this.loginservice.passwordCheck(result.userid,loginuser.password)
+            /*
             if(result.password == loginuser.password) {
                 this.authService.IssueJWT(loginuser);
                 return "로그인 성공"
             } else {
                 throw new HttpException('failed to login',HttpStatus.BAD_REQUEST)
             }
+            */
         }
     }
 

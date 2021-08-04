@@ -9,7 +9,7 @@ import { LoginModule } from './login/login.module';
 import { UserdataModule } from 'userdata/userdata.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Userdata } from 'userdata/userdata.entity';
-import { UserdataService } from 'userdata/userdata.service';
+import { UserdataService } from 'userdata/userdata.service';  
 import { RegisterModule } from './register/register.module';
 import { AuthModule } from './auth/auth.module';
 import { RegisterController } from './register/register.controller';
@@ -17,6 +17,9 @@ import { MoneydataService } from './moneydata/moneydata.service';
 import { MoneydataModule } from './moneydata/moneydata.module';
 import { Moneydata } from './moneydata/moneydata.entity';
 import { MoneyController } from './money/money.controller';
+import { FindPwController } from './find-pw/find-pw.controller';
+import { LoginService } from './login/login.service';
+import { FindPwModule } from './find-pw/find-pw.module';
 
 @Module({
   imports: [
@@ -29,9 +32,9 @@ import { MoneyController } from './money/money.controller';
       database: 'test',
       entities: [Userdata,Moneydata],
       synchronize: true,
-    }),
-    DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule, MoneydataModule],
-  controllers: [AppController, DashboardController, LoginController,RegisterController,MoneyController],
-  providers: [AppService, DashboardService,UserdataService, MoneydataService],
+    }), 
+    DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule, MoneydataModule,LoginModule, FindPwModule],
+  controllers: [AppController, DashboardController, LoginController,RegisterController,MoneyController, FindPwController],
+  providers: [AppService, DashboardService, MoneydataService,UserdataService,LoginService],
 })
 export class AppModule {}
