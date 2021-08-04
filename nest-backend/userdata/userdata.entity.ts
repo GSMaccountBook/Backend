@@ -20,4 +20,7 @@ export class Userdata {
 
   @Column()
   email: string;
+
+  @Column()
+  salt:string;
 }

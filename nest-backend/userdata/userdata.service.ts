@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Userdata } from './userdata.entity';
 import { ICreateUserdata } from './userdata.interface';
+import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class UserdataService {
@@ -11,7 +12,9 @@ export class UserdataService {
     private usersRepository: Repository<Userdata>,
   ) {}
 
-  createUserdata(createUserDto: ICreateUserdata) {
+  async createUserdata(createUserDto: ICreateUserdata) {
+    createUserDto.salt = await bcrypt.genSalt();
+    createUserDto.password = await bcrypt.hash(createUserDto.password,createUserDto.salt);
     return this.usersRepository.save(createUserDto);
   }
   getData(): Promise<Userdata[]> {

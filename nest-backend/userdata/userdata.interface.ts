@@ -3,4 +3,5 @@ export interface ICreateUserdata {
     password: string;
     username:string;
     email:string;
+    salt:string;
   }
