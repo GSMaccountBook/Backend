@@ -4,18 +4,22 @@ import { LoginUser } from 'userdata/login.interface';
 import { UserdataService } from 'userdata/userdata.service'
 import { AuthService } from 'src/auth/auth.service';
 import { LoginService } from './login.service';
+import * as bcrypt from 'bcrypt'
 
 @Controller('login')
 export class LoginController {
     
-    constructor(private readonly userdataservice: UserdataService,private authService: AuthService,private readonly loginservice:LoginService) {}
+    constructor(private readonly userdataservice: UserdataService,private authService: AuthService) {}
     @Post()
     async findAll(@Body() loginuser: LoginUser) {
         const result = await this.userdataservice.findIdCheck(loginuser.userid);
         if(result == undefined) {
             throw new HttpException('아이디를 찾을 수 없습니다',HttpStatus.BAD_REQUEST);
         } else {
-            this.loginservice.passwordCheck(result.userid,loginuser.password)
+            //this.loginservice.passwordCheck(result.userid,loginuser.password)
+            const userdata = await this.userdataservice.findIdCheck(result.userid);
+            const isMatch = await bcrypt.compare(result.password,userdata.salt);
+            console.log(isMatch)
             /*
             if(result.password == loginuser.password) {
                 this.authService.IssueJWT(loginuser);

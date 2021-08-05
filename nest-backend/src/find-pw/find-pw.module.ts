@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { FindPwService } from './find-pw.service';
+import { UserdataService } from 'userdata/userdata.service';
 
 @Module({})
 export class FindPwModule {
-    providers:[FindPwService]
+    providers:[UserdataService]
 }
