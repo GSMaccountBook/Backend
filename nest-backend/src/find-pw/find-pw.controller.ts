@@ -1,6 +1,6 @@
 import { Body, Post } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
-import { UserdataService } from 'userdata/userdata.service';
+import { UserdataService } from 'src/userdata/userdata.service';
 
 @Controller('find-pw')
 export class FindPwController {

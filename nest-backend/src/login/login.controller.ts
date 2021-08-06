@@ -1,7 +1,7 @@
 import { Body, Get, HttpException, HttpStatus, Req } from '@nestjs/common';
 import { Controller, Post } from '@nestjs/common';
-import { LoginUser } from 'userdata/login.interface';
-import { UserdataService } from 'userdata/userdata.service'
+import { LoginUser } from 'src/userdata/login.interface';
+import { UserdataService } from 'src/userdata/userdata.service'
 import { AuthService } from 'src/auth/auth.service';
 import { LoginService } from './login.service';
 import * as bcrypt from 'bcrypt'

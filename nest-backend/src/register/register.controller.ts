@@ -1,6 +1,6 @@
 import { HttpException,HttpStatus,Post,Body,Controller } from '@nestjs/common';
-import { ICreateUserdata } from 'userdata/userdata.interface';
-import { UserdataService } from 'userdata/userdata.service';
+import { ICreateUserdata } from 'src/userdata/userdata.interface';
+import { UserdataService } from 'src/userdata/userdata.service';
 
 @Controller('register')
 export class RegisterController {
