@@ -7,7 +7,7 @@ import { UserdataService } from 'src/userdata/userdata.service';
 import { LoginService } from './login.service';
 
 @Module({
-  imports:[AuthService],
-  providers: [LoginService]
+  imports:[TypeOrmModule.forFeature([Userdata])],
+  providers: [LoginService,UserdataService]
 })
 export class LoginModule {}

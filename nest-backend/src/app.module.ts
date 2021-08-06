@@ -36,6 +36,6 @@ import { AuthService } from './auth/auth.service';
     }), 
     DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule, MoneydataModule, FindPwModule],
   controllers: [AppController, DashboardController, LoginController,RegisterController,MoneyController, FindPwController],
-  providers: [AppService, DashboardService, MoneydataService,UserdataService,LoginService,AuthService],
+  providers: [AppService, DashboardService, MoneydataService,UserdataService,LoginService],
 })
 export class AppModule {}
