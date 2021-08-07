@@ -15,7 +15,7 @@ export class LoginController {
         if(result == undefined) {
             throw new HttpException('아이디를 찾을 수 없습니다',HttpStatus.BAD_REQUEST);
         } else {
-            let login_result = this.loginservice.passwordCheck(result.userid,loginuser.password)
+            let login_result = await this.loginservice.passwordCheck(result.userid,loginuser.password)
             if(login_result) {
                 this.authservice.IssueJWT(loginuser);
                 return "로그인 성공"
