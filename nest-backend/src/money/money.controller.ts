@@ -1,7 +1,9 @@
+import { Patch } from '@nestjs/common';
 import { Controller, Post,Body, Get, Headers } from '@nestjs/common';
 import jwtDecode from 'jwt-decode';
 import { ICreateMoneydata } from 'src/moneydata/moneydata.interface';
 import { MoneydataService } from 'src/moneydata/moneydata.service';
+import { IUpdateMoneydata } from 'src/moneydata/update.interface';
 
 @Controller('money')
 export class MoneyController {
@@ -25,4 +27,9 @@ export class MoneyController {
         let data = await this.moneydataservice.getData()
         return data;
     }
+/*
+    @Patch()
+    async update(@Body() updateMoneydataDto:IUpdateMoneydata) {
+        return this.moneydataservice.update()
+    }*/
 }
