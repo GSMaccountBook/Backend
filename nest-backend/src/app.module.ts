@@ -23,6 +23,7 @@ import { FindPwModule } from './find-pw/find-pw.module';
 import { AuthService } from './auth/auth.service';
 import { MypageController } from './mypage/mypage.controller';
 import { MypageModule } from './mypage/mypage.module';
+import { TestModule } from './test/test.module';
 
 @Module({
   imports: [
@@ -36,7 +37,7 @@ import { MypageModule } from './mypage/mypage.module';
       entities: [Userdata,Moneydata],
       synchronize: true,
     }), 
-    DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule, MoneydataModule, FindPwModule, MypageModule],
+    DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule, MoneydataModule, FindPwModule, MypageModule, TestModule],
   controllers: [AppController, DashboardController, LoginController,RegisterController,MoneyController, FindPwController, MypageController],
   providers: [AppService, DashboardService, MoneydataService,UserdataService,LoginService],
 })
