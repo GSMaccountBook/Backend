@@ -1,6 +1,6 @@
 export interface ICreateMoneydata {
     userid:string
     money:number
-    sopend:number
+    spend:number
     income:number
 }

@@ -1,5 +1,6 @@
 export interface IUpdateMoneydata {
-    money:number,
-    spend:number,
+    userid:string
+    money:number
+    spend:number
     income:number
 }
