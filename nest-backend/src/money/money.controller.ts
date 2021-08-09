@@ -22,6 +22,12 @@ export class MoneyController {
         return "변경되었습니다."
     }
 
+    @Post('update')
+    async update(@Body() updatemoneyDto:IUpdateMoneydata) {
+        const updatemoney = await this.moneydataservice.updateMoneydata(updatemoneyDto);
+        return "변경되었습니다."
+    }
+
     @Get()
     async getData() {
         let data = await this.moneydataservice.getData()
