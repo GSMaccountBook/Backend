@@ -9,7 +9,7 @@ export class AuthService {
 
 	async IssueJWT(user: any) {
         console.log(user)
-		const payload = { username: user.userid, sub: user.id };
+		const payload = { userid: user.userid, sub: user.id };
         console.log(this.jwtService.sign(payload))
 		return { access_token: this.jwtService.sign(payload) };
 	}

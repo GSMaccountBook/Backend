@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Userdata } from './userdata.entity';
 import { ICreateUserdata } from './userdata.interface';
 import * as bcrypt from 'bcrypt'
+import { IUpdateUserdata } from './userupdate.interface';
 
 @Injectable()
 export class UserdataService {
@@ -27,6 +28,13 @@ export class UserdataService {
 
   findIdCheck(userid: string): Promise<Userdata> {
     return this.usersRepository.findOne({userid:userid});
+  }
+
+  async updateUserdata(updateUserdataDto:IUpdateUserdata) {
+    const updatedata = await this.usersRepository.findOne({userid:updateUserdataDto.userid});
+    updatedata.username = updateUserdataDto.username;
+    updatedata.email = updateUserdataDto.email;
+    await this.usersRepository.save(updatedata);
   }
 
   async remove(id: string): Promise<void> {
