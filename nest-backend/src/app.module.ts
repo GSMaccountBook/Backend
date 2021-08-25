@@ -24,16 +24,20 @@ import { AuthService } from './auth/auth.service';
 import { MypageController } from './mypage/mypage.controller';
 import { MypageModule } from './mypage/mypage.module';
 import { TestModule } from './test/test.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal:true
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '127.0.0.1',
+      host: process.env.DATABASE_HOST,
       port: 3306,
-      username: 'root',
-      password: '0112',
-      database: 'test',
+      username: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
       entities: [Userdata,Moneydata],
       synchronize: true,
     }), 
