@@ -20,10 +20,8 @@ import { MoneyController } from './money/money.controller';
 import { FindPwController } from './find-pw/find-pw.controller';
 import { LoginService } from './login/login.service';
 import { FindPwModule } from './find-pw/find-pw.module';
-import { AuthService } from './auth/auth.service';
 import { MypageController } from './mypage/mypage.controller';
 import { MypageModule } from './mypage/mypage.module';
-import { TestModule } from './test/test.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
@@ -41,7 +39,7 @@ import { ConfigModule } from '@nestjs/config';
       entities: [Userdata,Moneydata],
       synchronize: true,
     }), 
-    DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule, MoneydataModule, FindPwModule, MypageModule, TestModule],
+    DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule, MoneydataModule, FindPwModule, MypageModule],
   controllers: [AppController, DashboardController, LoginController,RegisterController,MoneyController, FindPwController, MypageController],
   providers: [AppService, DashboardService, MoneydataService,UserdataService,LoginService],
 })
