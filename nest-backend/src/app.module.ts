@@ -30,17 +30,14 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal:true
     }),
     TypeOrmModule.forRoot({
-      type: 'mariadb',
+      type: 'mysql',
       host: process.env.DATABASE_HOST,
-      port:3306,
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
       entities: [User,Money],
       synchronize: true,
     }), 
-    DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule, MoneydataModule, FindPwModule, MypageModule],
-  controllers: [AppController, DashboardController, LoginController,RegisterController,MoneyController, FindPwController, MypageController],
-  providers: [AppService, DashboardService, MoneydataService,UserdataService,LoginService],
+    DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule, MoneydataModule, FindPwModule, MypageModule]
 })
 export class AppModule {}

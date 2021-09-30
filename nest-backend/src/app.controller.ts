@@ -7,6 +7,7 @@ export class AppController {
 
   @Get()
   getMoney(): any {
+    console.log(process.env.DATABASE_NAME)
     return this.appService.getHello();
   }
 }
