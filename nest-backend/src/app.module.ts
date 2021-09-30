@@ -8,14 +8,14 @@ import { LoginController } from './login/login.controller';
 import { LoginModule } from './login/login.module';
 import { UserdataModule } from 'src/userdata/userdata.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Userdata } from 'src/userdata/userdata.entity';
+import { User } from 'src/userdata/user.entity';
 import { UserdataService } from 'src/userdata/userdata.service';  
 import { RegisterModule } from './register/register.module';
 import { AuthModule } from './auth/auth.module';
 import { RegisterController } from './register/register.controller';
-import { MoneydataService } from './moneydata/moneydata.service';
-import { MoneydataModule } from './moneydata/moneydata.module';
-import { Moneydata } from './moneydata/moneydata.entity';
+import { MoneydataService } from './money/entity/money.service';
+import { MoneydataModule } from './money/entity/money.module';
+import { Money } from './money/entity/money.entity';
 import { MoneyController } from './money/money.controller';
 import { FindPwController } from './find-pw/find-pw.controller';
 import { LoginService } from './login/login.service';
@@ -30,13 +30,13 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal:true
     }),
     TypeOrmModule.forRoot({
-      type: 'mysql',
+      type: 'mariadb',
       host: process.env.DATABASE_HOST,
-      port: 3306,
+      port:3306,
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [Userdata,Moneydata],
+      entities: [User,Money],
       synchronize: true,
     }), 
     DashboardModule, LoginModule, UserdataModule, RegisterModule, AuthModule, MoneydataModule, FindPwModule, MypageModule],

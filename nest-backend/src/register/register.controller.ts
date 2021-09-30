@@ -1,5 +1,5 @@
 import { HttpException,HttpStatus,Post,Body,Controller } from '@nestjs/common';
-import { ICreateUserdata } from 'src/userdata/userdata.interface';
+import { CreateUserDto } from 'src/userdata/create.dto';
 import { UserdataService } from 'src/userdata/userdata.service';
 
 @Controller('register')
@@ -7,7 +7,7 @@ export class RegisterController {
     constructor(private readonly userdataservice: UserdataService) {}
 
     @Post()
-    async findAll(@Body() createUserdataDto: ICreateUserdata) {
+    async findAll(@Body() createUserdataDto: CreateUserDto) {
         const idCheck = await this.userdataservice.findIdCheck(createUserdataDto.userid);
         if(idCheck != undefined) {
             throw new HttpException('duplicated userid',HttpStatus.BAD_REQUEST)

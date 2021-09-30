@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Post, Headers } from '@nestjs/common';
-import { Userdata } from 'src/userdata/userdata.entity';
+import { User } from 'src/userdata/user.entity';
 import { UserdataService } from 'src/userdata/userdata.service';
 import jwt_decode from "jwt-decode";
-import { IUpdateUserdata } from 'src/userdata/userupdate.interface';
+import { UpdateDto } from 'src/userdata/update.dto';
 
 @Controller('mypage')
 export class MypageController {
@@ -16,7 +16,7 @@ export class MypageController {
     }
 
     @Post()
-    async modify_userdta(@Body() updateuserdata:IUpdateUserdata, @Headers("accessToken") accessToken) {
+    async modify_userdta(@Body() updateuserdata:UpdateDto, @Headers("accessToken") accessToken) {
         let decode:any = jwt_decode(accessToken);
         updateuserdata.userid = decode.userid;
         try {

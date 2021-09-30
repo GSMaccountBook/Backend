@@ -1,36 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Userdata } from './userdata.entity';
-import { ICreateUserdata } from './userdata.interface';
+import { User } from './user.entity';
+import { CreateUserDto } from './create.dto';
 import * as bcrypt from 'bcrypt'
-import { IUpdateUserdata } from './userupdate.interface';
+import { UpdateDto } from './update.dto';
 
 @Injectable()
 export class UserdataService {
   constructor(
-    @InjectRepository(Userdata)
-    private usersRepository: Repository<Userdata>,
+    @InjectRepository(User)
+    private usersRepository: Repository<User>,
   ) {}
 
-  async createUserdata(createUserDto: ICreateUserdata) {
+  async createUserdata(createUserDto: CreateUserDto) {
     createUserDto.salt = await bcrypt.genSalt();
     createUserDto.password = await bcrypt.hash(createUserDto.password,createUserDto.salt);
     return this.usersRepository.save(createUserDto);
   }
-  getData(): Promise<Userdata[]> {
+  getData(): Promise<User[]> {
     return this.usersRepository.find();
   }
 
-  findOne(id: string): Promise<Userdata> {
+  findOne(id: string): Promise<User> {
     return this.usersRepository.findOne(id);
   }
 
-  findIdCheck(userid: string): Promise<Userdata> {
+  findIdCheck(userid: string): Promise<User> {
     return this.usersRepository.findOne({userid:userid});
   }
 
-  async updateUserdata(updateUserdataDto:IUpdateUserdata) {
+  async updateUserdata(updateUserdataDto:UpdateDto) {
     const updatedata = await this.usersRepository.findOne({userid:updateUserdataDto.userid});
     updatedata.username = updateUserdataDto.username;
     updatedata.email = updateUserdataDto.email;

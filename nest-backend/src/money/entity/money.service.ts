@@ -1,25 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Moneydata } from './moneydata.entity';
-import { ICreateMoneydata } from './moneydata.interface';
-import { IUpdateMoneydata } from './update.interface';
+import { Money } from './money.entity';
+import { ICreateMoneydata } from '../dto/moneydata.interface';
+import { IUpdateMoneydata } from '../dto/update.interface';
 
 @Injectable()
 export class MoneydataService {
     constructor(
-        @InjectRepository(Moneydata)
-        private moneyRepository: Repository<Moneydata>,
+        @InjectRepository(Money)
+        private moneyRepository: Repository<Money>,
       ) {}
     
       createMoneydata(createMoneyDto:ICreateMoneydata) {
         return this.moneyRepository.save(createMoneyDto);
       }
-      getData(): Promise<Moneydata[]> {
+      getData(): Promise<Money[]> {
         return this.moneyRepository.find();
       }
     
-      findIdCheck(userid: string): Promise<Moneydata> {
+      findIdCheck(userid: string): Promise<Money> {
         return this.moneyRepository.findOne({userid:userid});
 
       }

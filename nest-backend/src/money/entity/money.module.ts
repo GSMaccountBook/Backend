@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Moneydata } from './moneydata.entity';
-import { MoneydataService } from './moneydata.service';
+import { Money } from './money.entity';
+import { MoneydataService } from './money.service';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Moneydata])],
+    imports: [TypeOrmModule.forFeature([Money])],
     providers:[MoneydataService],
     exports: [TypeOrmModule]
   })

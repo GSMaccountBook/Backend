@@ -2,10 +2,10 @@ import { Patch } from '@nestjs/common';
 import { Controller, Post,Body, Get, Headers } from '@nestjs/common';
 import { ApiBody, ApiCreatedResponse, ApiOperation, ApiParam, ApiProperty, ApiTags } from '@nestjs/swagger';
 import jwtDecode from 'jwt-decode';
-import { Moneydata } from 'src/moneydata/moneydata.entity';
-import { ICreateMoneydata } from 'src/moneydata/moneydata.interface';
-import { MoneydataService } from 'src/moneydata/moneydata.service';
-import { IUpdateMoneydata } from 'src/moneydata/update.interface';
+import { Money } from 'src/money/entity/money.entity';
+import { ICreateMoneydata } from 'src/money/dto/moneydata.interface';
+import { MoneydataService } from 'src/money/entity/money.service';
+import { IUpdateMoneydata } from 'src/money/dto/update.interface';
 
 @Controller('money')
 @ApiTags('자산 확인 컨트롤러')

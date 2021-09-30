@@ -1,6 +1,6 @@
 import { Body, Get, HttpException, HttpStatus, Req } from '@nestjs/common';
 import { Controller, Post } from '@nestjs/common';
-import { LoginUser } from 'src/userdata/login.interface';
+import { LoginDto } from 'src/login/dto/login.dto';
 import { UserdataService } from 'src/userdata/userdata.service'
 import { AuthService } from 'src/auth/auth.service';
 import { LoginService } from './login.service';
@@ -10,7 +10,7 @@ import * as bcrypt from 'bcrypt'
 export class LoginController {
     constructor(private readonly userdataservice:UserdataService,private readonly loginservice:LoginService,private readonly authservice:AuthService) {}
     @Post()
-    async findAll(@Body() loginuser: LoginUser) {
+    async findAll(@Body() loginuser: LoginDto) {
         const result = await this.userdataservice.findIdCheck(loginuser.userid);
         if(result == undefined) {
             throw new HttpException('아이디를 찾을 수 없습니다',HttpStatus.BAD_REQUEST);
