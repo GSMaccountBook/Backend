@@ -1,6 +1,6 @@
 import { HttpException,HttpStatus,Post,Body,Controller } from '@nestjs/common';
-import { CreateUserDto } from 'src/userdata/create.dto';
-import { UserdataService } from 'src/userdata/userdata.service';
+import { CreateUserDto } from 'src/user/dto/create.dto';
+import { UserdataService } from 'src/user/entity/userdata.service';
 
 @Controller('register')
 export class RegisterController {

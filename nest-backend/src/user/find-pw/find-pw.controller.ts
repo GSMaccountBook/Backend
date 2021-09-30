@@ -1,6 +1,6 @@
 import { Body, Get, Post } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
-import { UserdataService } from 'src/userdata/userdata.service';
+import { UserdataService } from 'src/user/entity/userdata.service';
 import * as bcrypt from 'bcrypt'
 
 @Controller('find-pw')

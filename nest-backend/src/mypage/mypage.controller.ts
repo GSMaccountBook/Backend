@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Post, Headers } from '@nestjs/common';
-import { User } from 'src/userdata/user.entity';
-import { UserdataService } from 'src/userdata/userdata.service';
+import { User } from 'src/user/entity/user.entity';
+import { UserdataService } from 'src/user/entity/userdata.service';
 import jwt_decode from "jwt-decode";
-import { UpdateDto } from 'src/userdata/update.dto';
+import { UpdateDto } from 'src/user/dto/update.dto';
 
 @Controller('mypage')
 export class MypageController {
